@@ -5,7 +5,6 @@ const pizzaSlices = document.getElementById('pizzaSlices')
 const pizzaPeople = document.getElementById('pizzaPeople')
 
 //EASY
-
 exersiseForm.addEventListener('submit', (e) => {
     e.preventDefault()
     if (exersiseInput.value == "") {
@@ -21,11 +20,6 @@ function excersiseOfTheDay(workout) {
 
 
 //MEDIUM
-
-//Write a function that will allow you to calculate how many slices of pizza x each person y would get if they shared evenly. 
-// The function should return an interpolated string like Each person gets 4.00 slices of pizza; from our 8-slice pizza x 
-// being a decimal in case there is no way to split the pizza evenly.
-
 pizzaForm.addEventListener("submit", (e) => {
     e.preventDefault()
     if (pizzaSlices.value == "" && pizzaPeople.value == "") {
@@ -40,21 +34,12 @@ function pizzaCalc(a, b) {
     console.log(pizzaSplit)
 }
 
+
 //HARD
-
-// Inside a closure, create an object called PII (Personally Identifiable Information)that cannot be accessed directly. 
-// The object should have at least two properties: name and SSN. Only the name property should be accessible, and 
-//it should be called through a public function. The SSN property should not be accessible at all. Creating private
-// objects and private properties helps you control who has access to what data and helps you prevent people who 
-// shouldn't see important info like social security numbers from getting access to the data. You can use 'getName' 
-// or other get methods to access data that people might need. For example, people addressing a package or email may
-// need a customer's name, but they definitely shouldn't have access to their SSN. 
-
-
 function userData() {
     const PII = {
         clientName: "Michael",
-        clientSSN: "123-456-7890"
+        clientSSN: "123-45-6789"
     }
     return {
         getName: function () {
@@ -62,42 +47,12 @@ function userData() {
         }
     }
 }
+const userInfo = userData()
+console.log(userInfo.getName())
 
-// const ssn = "123-456-7890"
-// return console.log(`Your ssn is ${ssn}`)
-
-const userPIIData = userData()
-
-console.log(userPIIData.getName())
-console.log(userPIIData.PII)
-// console.log(person1.clientName)
-// console.log(person1.clientSsn())
 
 
 //VERY HARD
-
-
-// Object prototype chain and prototypal inheritance exercise.
-// Create a Person constructor that has three properties: name, job, and age.
-// Give the Person an 'exercise' method that console logs whatever you want, e.g. "Running is fun! - said no one ever".
-// Give the Person a 'fetchJob' method that console logs the person's name and job, e.g. "Brad is a back-end developer".
-// Create a Programmer constructor that inherits all the members from Person with an additional 'languages' property that is passed in and a busy property that is NOT passed in and is set to true by default.
-// Give the Programmer a 'completeTask' method that updates the busy property on that programmer to be false. Also, give the Programmer an 'acceptNewTask' method that updates the busy property on that programmer to be true.
-// Give the Programmer an 'offerNewTask' method that console logs one thing if the programmer is busy and another if the programmer is not, e.g., should initially log out "Mark can't accept any new tasks right now." and "Mark would love to take on a new responsibility." if the programmer is not busy.
-
-// Give the Programmer 'learnLanguage' and 'listLanguages' methods that add new languages to the programmer and list off all 
-//languages the programmer knows.
-// Test it out - can you create different programmers and run all the methods on them? Does each programmer maintain their own properties properly and independently of the other programmers? Bonus - ES6 Syntax: Use ES6 Syntax in your answer. Feel free to add new methods or properties to incorporate the syntax.
-
-
-//create person constructor w/ name, jobm and age
-//give the person an excersise method that displays a personal message
-//give a fetchJob method that shows the person's name and job in a console log as a personal message
-//create a construction name programmer than 
-//learnLanugage and listLanguages methods that list all the languages the pogrammer knows
-//
-
-
 class Person {
     constructor(personName, job, age) {//Gives the constructor parameters of personalName, job, and age
         this.personName = personName,
@@ -111,38 +66,32 @@ class Person {
         }
     }
 }
-//give programmer a method called completeTask to busy status effect to false,
-//acceptNewTask a method that busy status effect to true
-//offerNewTask a method that consolelogs ifif the programmer is busy and another if hes not
 
-
-class Programmer extends Person {
+class Programmer extends Person { //programmer inherets person's values
     constructor(personName, job, age, languages) {
-        super(personName, job, age),
+        super(personName, job, age), //Inherits the values of Person's "personName" "job" "age"
             this.languages = languages,
             this.busy = true
-
-        this.completeTask = function () {
+        this.completeTask = function () { //Sets busy to false
             this.busy = false
         }
-        this.acceptNewTask = function () {
+        this.acceptNewTask = function () {//Sets busy to true
             this.busy = true
         }
-        this.offerNewTask = function () {
+        this.offerNewTask = function () { //if statement that displays a message in the console if the user busy 
             if (this.busy == true) {
-                console.log(`${personName} is busy cannot take new tasks at the moment `)
+                console.log(`${personName} is busy.${personName} cannot take new tasks at the moment `)
             } else {
-                console.log(`${personName} is not busy at the moment and can take new tasks`)
+                console.log(`${personName} is not busy. ${personName}can take new tasks`)
             }
         }
         //learnLanugage and listLanguages methods that list all the languages the pogrammer knows
-
         this.learnLanguage = function () {
-            for (let i = 0; i < languages.length; i++) {
-                console.log(`${languages[i]}`)
+            for (let i = 0; i < languages.length; i++) { //Iterates over the language length until i is greater than the length of the array
+                console.log(`${languages[i]}`)//Console logs the index value of the languages array
             }
             this.listLanguage = function () {
-                console.log(`Your known languages are ${this.languages}`)
+                console.log(`Your known languages are ${this.languages}`)//Console logs the languages array values
             }
         }
     }
@@ -152,12 +101,15 @@ const person2 = new Programmer("Haile", "CEO", 21, ["TypeScript", "Javascript", 
 console.log(person1)
 console.log(person1.excersise())
 console.log(person1.fetchJob())
-console.log(person1.languages)
-console.log(person1)
+
 console.log(person1.offerNewTask())
 person1.acceptNewTask()
 console.log(person1.offerNewTask())
 person1.completeTask()
 console.log(person1.offerNewTask())
+
 console.log(person1.learnLanguage())
+console.log(person1.listLanguage())
+
+
 console.log(person2)
