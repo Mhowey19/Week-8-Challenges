@@ -80,9 +80,9 @@ class Programmer extends Person { //programmer inherets person's values
         }
         this.offerNewTask = function () { //if statement that displays a message in the console if the user busy 
             if (this.busy == true) {
-                console.log(`${personName} is busy.${personName} cannot take new tasks at the moment `)
+                console.log(`${personName} is busy. ${personName} cannot take new tasks at the moment `)
             } else {
-                console.log(`${personName} is not busy. ${personName}can take new tasks`)
+                console.log(`${personName} is not busy. ${personName} can take new tasks`)
             }
         }
         //learnLanugage and listLanguages methods that list all the languages the pogrammer knows
