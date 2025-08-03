@@ -23,9 +23,9 @@ function excersiseOfTheDay(workout) {
 pizzaForm.addEventListener("submit", (e) => {
     e.preventDefault()
     if (pizzaSlices.value == "" && pizzaPeople.value == "") {
-        console.log("it works")
+        console.log(pizzaCalc(8, 4))
     } else {
-        pizzaCalc(pizzaPeople.value, pizzaSlices.value)
+        pizzaCalc(pizzaSlices.value, pizzaPeople.value)
     }
 })
 
